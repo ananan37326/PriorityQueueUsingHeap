@@ -86,9 +86,9 @@ void Heap::buildHeap()
 
 void Heap::IncreaseKey(int i,int newKey)
 {
-   // if(newKey < heap[i])
-        //cout << "New key is smaller than old key!";
-   // else
+    if(newKey < heap[i])
+        cout << "New key is smaller than old key!";
+    else
     {
         heap[i] = newKey;
         while(i>0 && heap[Parent(i)] < heap[i])
@@ -101,8 +101,13 @@ void Heap::IncreaseKey(int i,int newKey)
 
 void Heap::DecreaseKey(int i,int newKey)
 {
-    heap[i] = newKey;
-    MaxHeapify(i);
+    if(newKey > heap[i])
+        cout << "New key is greater than old key!";
+    else
+    {
+        heap[i] = newKey;
+        MaxHeapify(i);
+    }
 }
 
 void Heap::Insert(int x)
@@ -138,7 +143,7 @@ void Heap::printHeap()
 {
     for(int i=0;i<length;i++)
     {
-        cout << heap[i] << " " << endl;
+        cout << heap[i] << " " ;
     }
 }
 
@@ -159,7 +164,7 @@ int main()
     Heap pq(n);
     while(1)
     {
-        cout << "Priority queue operations : " << endl;
+        cout << "Priority queue operations (Indexing starts at 0) : " << endl;
         cout <<"1. Insert an element\n2. Find the maximum element\n3. Extract the maximum element\n";
         cout <<"4. Increase the key of a certain index\n5. Decrease the key of a certain index\n";
         cout <<"6. Print the priority queue\n7. Exit\n\n";
